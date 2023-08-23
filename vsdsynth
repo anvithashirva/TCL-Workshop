@@ -1,0 +1,24 @@
+#!/bin/tcsh -f
+echo 
+echo " This command is used to pass .csv file"
+echo " from UNIX shell to TCL script"
+echo
+
+set my_work_dir = 'pwd'
+
+if ($#argv != 1) then
+	echo "Info: Please provide the CSV file"
+	exit 1
+endif
+
+if (! -f $argv[1] || $argv[1] == "-help") then
+	if ($argv[1] != "-help") then
+		echo "Error: Cannot find the CSV file $argv[1], exiting.."
+		exit 1
+	else
+		echo "The path to the CSV file is provided in the task excel sheet"
+		exit 1
+	endif
+else
+	tclsh vsdsynth.tcl $argv[1]
+endif
