@@ -1,9 +1,14 @@
 # TCL-Workshop
-In this workshop, the CSV file is processed using TCL scripts to obtain the timing details after synthesis.
+In this workshop, the design details provided in an excel sheet is processed using TCL scripts to obtain the timing details after synthesis.
+![introduction](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/00b39247-84fc-4572-bb13-b0d98cc3e581)
 
 DAY ONE
-- Understand the problem statement
-- create "vsdsynth" command to pass the .csv file to the TCL script
+- Understand the problem statement.
+- Create "vsdsynth" command to pass the .csv input file to the TCL script.
+![create_command](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/e9fda19a-3b6b-46e5-9f38-4d9e533a8d2e)
+![create_command_o](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/a7ee52a5-267f-43d4-bd7f-197cb3864832)
+
+
 
 DAY TWO
 - Processed design details CSV file to create variables
