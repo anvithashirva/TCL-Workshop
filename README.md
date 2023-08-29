@@ -23,17 +23,60 @@ DAY TWO
 
 - Read the constraints present in CSV file and convert it into Synopsys Design Constraints (SDC) format.
   - Step 1: Convert the CSV file containting the timing constraints to a matrix
+    
 ![constraints_csv](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/1c158f04-e8a1-45c0-affe-cc5e4324e8a8)
 
- - Step 2: Determine the number of rows and columns of the matrix.
- - Step 3: Search for clocks, input ports, and output ports, and determine their row number in the matrix.
+  - Step 2: Determine the number of rows and columns of the matrix.
+  - Step 3: Search for clocks, input ports, and output ports, and determine their row number in the matrix.
 
 ![row_numbers](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/0a8dc705-cd97-4add-a5e1-b2cb3aaea5ac)
 
 DAY THREE
-- Processed the clock constraints to openMSP430.sdc file following the SDC format
-- Processed the input port constraints to openMSP430.sdc file following the SDC format
 
+  - Step 4: Processing of clock constraints by determining the column number of each clock constraint, loop through the clock ports and write the constraints in SDC format.
+    
+![clock_sdc](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/d69c8971-dd17-4624-9836-1644cda13743)
+
+  - Step 5: Processing of input constraints by determining the column number of each input constraint, loop through all the input ports, identify input ports with single bit and multiple bits, and write the constraints in SDC format.
+
+![input_constraints](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/70b36b09-1854-49ed-bb81-29dbfc9974ef)
+  
+  - Step 6: Processing of output constraints by determining the column number of each output constraint, loop through all the output ports, identify output ports with single bit and multiple bits, and write the constraints in SDC format.
+    
+![output_constraints](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/d6fbd9c5-5feb-4602-8ef3-cf1870b9583a)
+
+Processed constraints are present in outdir_openMSP430/openMSP430.sdc file 
+
+DAY FOUR
+- Hierarchy Check
+  - Before proceeding with synthesis, check if all the modules in the design are included in the top module in the hierarchical order by performing a hierarchy check.
+  - Script to check hierarchy is present in outdir_openMSP430/openMSP430.hier.ys
+  - This script is run on Yosys tool. The outputs and errors are redirected to the log file in outdir_openMSP430/openMSP430.hierarchy_check.log
+    
+![hier_check](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/3b795a63-a676-450b-b18f-798d3350fb87)
+ 
 DAY FIVE
-- Final output is displayed here
+- Synthesis
+  - Script for synthesis to be used by Yosys Tool is created. It is present in outdir_openMSP430/openMSP430.ys
+  - Synthesis is performed using Yosys Tool. The output of synthesis is present in outdir_openMSP430/openMSP430.synth.v The errors are redirected to the log file in outdir_openMSP430/openMSP430.synthesis.log
+    
+![synthe](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/97bb0ace-a9a9-41ad-8b60-e9c2c712d449)
+
+- Output file from synthesis is edited to remove some redundant lines which could hinder the operation of the timimg tool - OpenTimer. The edited output file is present in outdir_openMSP430/openMSP430.final.synth.v
+
+- Introduction to Procs, using Procs to create openMSP430.conf file. This file contains details about the number of threads,  path for libraries, final synthesis output, spef file, timing details and other commands required to run OpenTimer.
+  
+- The proc read_sdc.proc is used to convert the timing constraints from SDC format to a format suitable for OpenTimer.
+  - Clock port name, clock period, duty cycle, arrival time and slew are deduced.
+  - Arrival time and slew of the inputports are deduced.
+  - Required arrival time and load of output ports are deduced.
+  - Expanding the ports with multiple bits and applying the delay values to them
+  - These details are saved in outdir_openMSP430/openMSP430.timing
+    
+- Spef file is created in  outdir_openMSP430/openMSP430.spef
+
+- Timing results obtained from OpenTimer are present in outdir_openMSP430/openMSP430.results
+  
+FINAL OUTPUT
+
 ![final_output](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/db8d754b-3f9c-459e-b9a1-bbacefd43ae7)
