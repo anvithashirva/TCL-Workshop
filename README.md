@@ -50,30 +50,30 @@ Processed constraints are present in outdir_openMSP430/openMSP430.sdc file
 DAY FOUR
 - Hierarchy Check
   - Before proceeding with synthesis, check if all the modules in the design are included in the top module in the hierarchical order by performing a hierarchy check.
-  - Script to check hierarchy is present in outdir_openMSP430/openMSP430.hier.ys
-  - This script is run on Yosys tool. The outputs and errors are redirected to the log file in outdir_openMSP430/openMSP430.hierarchy_check.log
+  - Script to check hierarchy is present in outdir_openMSP430/openMSP430.hier.ys.
+  - This script is run on Yosys tool. The outputs and errors are redirected to the log file in outdir_openMSP430/openMSP430.hierarchy_check.log.
     
 ![hier_check](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/3b795a63-a676-450b-b18f-798d3350fb87)
  
 DAY FIVE
 - Synthesis
-  - Script for synthesis to be used by Yosys Tool is created. It is present in outdir_openMSP430/openMSP430.ys
-  - Synthesis is performed using Yosys Tool. The output of synthesis is present in outdir_openMSP430/openMSP430.synth.v The errors are redirected to the log file in outdir_openMSP430/openMSP430.synthesis.log
+  - Script for synthesis to be used by Yosys Tool is created. It is present in outdir_openMSP430/openMSP430.ys.
+  - Synthesis is performed using Yosys Tool. The output of synthesis is present in outdir_openMSP430/openMSP430.synth.v. The errors are redirected to the log file in outdir_openMSP430/openMSP430.synthesis.log.
     
 ![synthe](https://github.com/anvithashirva/TCL-Workshop/assets/130870681/97bb0ace-a9a9-41ad-8b60-e9c2c712d449)
 
-- Output file from synthesis is edited to remove some redundant lines which could hinder the operation of the timimg tool - OpenTimer. The edited output file is present in outdir_openMSP430/openMSP430.final.synth.v
+- Output file from synthesis is edited to remove some redundant lines which could hinder the operation of the timimg tool - OpenTimer. The edited output file is present in outdir_openMSP430/openMSP430.final.synth.v.
 
-- Introduction to Procs, using Procs to create openMSP430.conf file. This file contains details about the number of threads,  path for libraries, final synthesis output, spef file, timing details and other commands required to run OpenTimer.
+- Introduction to Procs and using Procs to create openMSP430.conf file. This file contains details about the number of threads,  path for libraries, final synthesis output, spef file, timing details and other commands required to run OpenTimer.
   
 - The proc read_sdc.proc is used to convert the timing constraints from SDC format to a format suitable for OpenTimer.
-  - Clock port name, clock period, duty cycle, arrival time and slew are deduced.
-  - Arrival time and slew of the inputports are deduced.
-  - Required arrival time and load of output ports are deduced.
-  - Expanding the ports with multiple bits and applying the delay values to them
+  - Clock port name, clock period, duty cycle, arrival time and slew are derived.
+  - Arrival time and slew of the input ports are derived.
+  - Required arrival time and load of output ports are derived.
+  - Expanding the ports with multiple bits and applying the delay values to them.
   - These details are saved in outdir_openMSP430/openMSP430.timing
     
-- Spef file is created in  outdir_openMSP430/openMSP430.spef
+- Spef file is created in outdir_openMSP430/openMSP430.spef
 
 - Timing results obtained from OpenTimer are present in outdir_openMSP430/openMSP430.results
   
