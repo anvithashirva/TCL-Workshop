@@ -532,6 +532,7 @@ foreach design_name $DesignName run_time $time_elasped_in_sec instance_count $In
 }
 
 puts [format $formatStr "-----------" "-------" "--------------" "------------" "---------" "----------" "--------" "----------" "-------"]
+
 puts "\n"
 
 
